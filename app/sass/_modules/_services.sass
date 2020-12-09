@@ -1,0 +1,213 @@
+.services
+  &__description
+    margin-bottom: 54px
+  // /////////// //
+  &__tabs
+    &-nav
+      display: flex
+      justify-content: center
+      align-items: center
+      margin-bottom: 40px
+      +media-breakpoint-down(xs) // ≤576px
+        display: none
+    &-btn
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 265px
+      height: 70px
+      // 
+      color: $text
+      // 
+      background-color: #fff
+      border: none
+      box-shadow: 0 3px 16px rgba(#000, .16)
+      // 
+      transition: all .3s
+      &.active
+        color: #fff
+        // 
+        background-color: $accent
+        box-shadow: none
+      &:focus
+        outline: none
+    &-item
+      +media-breakpoint-down(xs) // ≤576px
+        &.tab-pane
+          display: block
+    &-head
+      display: none
+      +media-breakpoint-down(xs) // ≤576px
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 100%
+        height: 70px
+        margin-top: 8px
+        // 
+        font-family: Prompt
+        font-weight: 400
+        color: #fff
+        // 
+        background-color: $accent
+  // /////////// //
+  &__cards
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+  &__card
+    width: 33.333%
+    padding-top: 14px
+    margin-top: -1px
+    // 
+    background-color: #fff
+    border: 1px solid #e2e2e2
+    +media-breakpoint-down(lg) // ≤1200px
+      width: 50%
+    +media-breakpoint-down(sm) // ≤768px
+      width: 100%
+      padding-top: 0
+    &-head
+      display: flex
+      justify-content: space-between
+      align-items: center
+      width: 100%
+      height: 110px
+      padding: 
+        right: 14px
+        left: 54px
+      // 
+      background: none
+      border: none
+      +media-breakpoint-down(sm) // ≤768px
+        flex-direction: row-reverse
+        justify-content: flex-end
+        padding: 0 19px
+        &.active
+          .icon
+            transform: rotate(180deg)
+      .img
+        width: 90px
+        height: 90px
+        margin-left: 15px
+        // 
+        object-fit: cover
+        +media-breakpoint-down(sm) // ≤768px
+          margin-left: 0
+        +media-breakpoint-down(xs) // ≤576px
+          width: 45px
+          height: 45px
+      .icon
+        display: none
+        +media-breakpoint-down(sm) // ≤768px
+          display: block
+          margin-left: auto
+          // 
+          font-size: 32px
+          color: $accent
+          // 
+          transition: transform .3s
+      &:focus
+        outline: none
+    &-title
+      font-family: Arvo
+      font-size: 24px
+      text-align: left
+      line-height: 30px
+      color: $text
+      +media-breakpoint-down(sm) // ≤768px
+        max-width: 55%
+        margin-left: 25px
+      +media-breakpoint-down(xs) // ≤576px
+        max-width: 100%
+        margin-right: 15px
+        margin-left: 15px
+        // 
+        font-size: 18px
+        line-height: 26px
+        br
+          display: none
+    &-content
+      +media-breakpoint-up(md) // ≥768px
+        &.collapse
+          display: block
+          min-height: 185px
+    &-links
+      display: flex
+      flex-direction: column
+      padding: 14px
+        top: 5px
+        left: 54px
+      // 
+      font-family: Prompt
+      +media-breakpoint-down(sm) // ≤768px
+        padding: 14px 26px 34px
+    &-link
+      position: relative
+      // 
+      align-self: start
+      display: inline-block
+      // 
+      line-height: 34px
+      color: $text
+      &::before
+        content: ''
+        // 
+        position: absolute
+        bottom: 4px
+        left: 0
+        // 
+        width: 0
+        height: 1px
+        // 
+        background-color: $second
+        // 
+        transition: width .3s ease-in-out
+      &:hover
+        text-decoration: none
+        color: inherit
+      +media-breakpoint-up(lg) // ≥992px
+        &:hover
+          &::before
+            width: 100%
+  &__big_card
+    display: flex
+    flex-direction: column
+    align-items: center
+    height: 621px
+    padding: 60px
+    margin-top: -1px
+    // 
+    text-align: center
+    // 
+    background-color: #fff
+    border: 1px solid #e2e2e2
+    +media-breakpoint-down(xs) // ≤576px
+      height: auto
+      padding: 32px 15px 20px
+    &-icon
+      width: 90px
+      height: 90px
+      margin-bottom: 40px
+      +media-breakpoint-down(xs) // ≤576px
+        width: 45px
+        height: 45px
+        margin-bottom: 24px
+      .img
+        width: 100%
+    &-description
+      width: 65%
+      margin-bottom: 65px
+      +media-breakpoint-down(md) // ≤992px
+        width: 75%
+        margin-bottom: 45px
+      +media-breakpoint-down(sm) // ≤768px
+        width: 100%
+        margin-bottom: 30px
+      p + p
+        margin-top: 30px
+    &-btn
+      width: 287px
+      +media-breakpoint-down(xs) // ≤576px
+        max-width: 100%
+        margin: 0 15px

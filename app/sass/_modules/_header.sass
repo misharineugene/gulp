@@ -1,0 +1,468 @@
+.g-header
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 99
+  // 
+  width: 100%
+  &::before
+    content: ''
+    // 
+    position: absolute
+    top: 0 
+    left: 0
+    z-index: 0
+    // 
+    display: block
+    width: 100%
+    height: 100%
+    // 
+    background-color: #fff
+    box-shadow: 0px 3px 45px rgba(#000, .2)
+  a:hover
+    text-decoration: none
+  &__main
+    display: flex
+    max-height: 125px
+    // 
+    transition: max-height .5s ease-in-out .1s
+    +media-breakpoint-up(xl) // ≥1200px
+      position: relative
+    +media-breakpoint-down(lg) // ≤1200px
+      justify-content: space-between
+      height: 54px
+  &__logo
+    position: relative
+    // 
+    display: flex
+    align-items: center
+    justify-content: center
+    align-self: center
+    flex: 0 0 106px
+    width: 106px
+    height: 100%
+    margin-right: 52px
+    // 
+    transition: opacity .3s
+    +media-breakpoint-down(lg) // ≤1200px
+      flex: 0 0 66px
+      width: 66px
+      margin: 0
+    &-img
+      position: absolute
+      // 
+      display: block
+      // 
+      transition: transform .5s ease-in-out
+      &--main
+        width: 100%
+        height: 103px
+        +media-breakpoint-down(lg) // ≤1200px
+          height: 64px
+          // 
+          transform: translateY(10px)
+      &--move
+        width: 72px
+        // 
+        transform: translateY(-200px)
+    +media-breakpoint-up(lg) // ≥992px
+      &:hover
+        opacity: 0.85
+  &__let
+    position: relative
+    // 
+    display: flex
+    flex-direction: column
+    flex: 0 0 139px
+    width: 139px
+    padding: 28px 13px 0
+    margin-right: 50px
+    // 
+    text-align: center
+    // 
+    transition: transform .5s ease-in-out
+    +media-breakpoint-down(xl) // ≤1440px
+      margin-right: 26px
+    +media-breakpoint-down(lg) // ≤1200px
+      order: -1
+      flex: 0 0 79px
+      width: 79px
+      padding: 20px 5px 0
+      margin: 0
+    &::before
+      content: ''
+      // 
+      position: absolute
+      top: 0
+      left: 0
+      // 
+      width: 100%
+      height: 153px
+      // 
+      background-image: url('../img/dest/flag.svg')
+      background-size: cover
+      background-repeat: no-repeat
+      background-position: bottom center
+      +media-breakpoint-down(lg) // ≤1200px
+        height: 73px
+    &-text
+      position: relative
+      // 
+      font-size: 13px
+      font-weight: 500
+      line-height: 15px
+      +media-breakpoint-down(lg) // ≤1200px
+        display: none
+      p
+        margin: 0
+    &-title
+      position: relative
+      // 
+      display: block
+      margin-top: 10px
+      // 
+      font-family: Arvo
+      font-size: 30px
+      font-weight: 700
+      text-transform: uppercase
+      white-space: nowrap
+      line-height: 16px
+      color: $accent
+      +media-breakpoint-down(lg) // ≤1200px
+        margin-top: 3px
+        // 
+        font-size: 18px
+  &__nav
+    &-list
+      display: flex
+      padding: 0
+      margin: 0
+      // 
+      list-style: none
+      +media-breakpoint-down(lg) // ≤1200px
+        flex-direction: column
+        width: 200px
+        margin-bottom: 5vh
+      & > li.menu-item
+        a
+          display: flex
+          justify-content: center
+          align-items: center
+          padding: 0 25px
+          +media-breakpoint-down(xl) // ≤1440px
+            padding: 0 12px
+          +media-breakpoint-down(lg) // ≤1200px
+            justify-content: flex-start
+            padding: 0
+          span
+            position: relative
+            // 
+            display: block
+            padding: 50px 0
+            overflow: hidden
+            // 
+            font-size: 17px
+            line-height: 25px
+            color: $text
+            // 
+            transition: padding .5s ease-in-out .1s
+            +media-breakpoint-down(lg) // ≤1200px
+              padding: 15px 0
+            +media-breakpoint-up(lg) // ≥992px
+              &::before
+                content: ''
+                // 
+                position: absolute
+                left: 0
+                bottom: 0
+                // 
+                width: 100%
+                height: 5px
+                margin-bottom: -5px
+                // 
+                background-color: $second
+                // 
+                transition: margin-bottom .2s
+        +media-breakpoint-up(lg) // ≥992px
+          &:hover span::before,
+          span.active::before
+            margin-bottom: 0
+
+  &__contacts
+    display: flex
+    align-self: center
+    flex-direction: column
+    margin-left: auto
+    // 
+    transition: transform .5s ease-in-out
+    +media-breakpoint-down(lg) // ≤1200px
+      margin: 0
+        top: auto
+    &-phone
+      display: block
+      margin-bottom: 5px
+      // 
+      font-size: 35px
+      color: $text
+    &-email
+      position: relative
+      // 
+      display: block
+      // 
+      font-size: 14px
+      line-height: 21px
+      color: $text
+      &::before
+        content: ''
+        // 
+        position: absolute
+        bottom: 0
+        left: 0
+        // 
+        width: 100%
+        height: 1px
+        // 
+        background-color: $second
+  &__toggle
+    display: none
+    +media-breakpoint-down(lg) // ≤1200px
+      position: relative
+      // 
+      display: block
+      padding: 15px 30px
+      margin:
+        right: -15px
+        left: 30px
+      span
+        left: 50%
+        // 
+        transform: translateX(-50%)
+      span,
+      span::before,
+      span::after
+        position: absolute
+        top: 50%
+        // 
+        display: block
+        height: 2px
+        width: 30px
+        margin-top: -1px
+        // 
+        background-color: $accent
+        +media-breakpoint-down(sm) // ≤768px
+          width: 18px
+      span::before,
+      span::after
+        content: ''
+        // 
+        transition: all 0.2s
+      span::before
+        transform: translateY(-6px)
+        +media-breakpoint-down(sm) // ≤768px
+          transform: translateY(-4px)
+      span::after
+        transform: translateY(6px)
+        +media-breakpoint-down(sm) // ≤768px
+          transform: translateY(4px)
+      &.open
+        span
+          background-color: transparent
+          &::before
+            transform: rotate(45deg)
+          &::after
+            transform: rotate(-45deg)
+        &:active
+          span::before,
+          span::after
+            background-color: $second
+  &__mobile
+    position: relative
+    // 
+    display: flex
+    width: 100%
+    // 
+    font-family: Prompt
+    +media-breakpoint-down(lg) // ≤1200px
+      position: absolute
+      left: 0
+      top: 0
+      z-index: -1
+      // 
+      flex-direction: column
+      align-items: center
+      min-height: 100vh
+      height: 100%
+      padding: 
+        top: 110px
+        bottom: 30px
+      overflow-y: scroll
+      // 
+      background-color: #fff
+      // 
+      transform: translateY(-100%)
+      // 
+      transition: transform .3s ease-in-out, padding .5s ease-in-out .1s
+      &.open
+        transform: translateY(0)
+  &__call-btn
+    position: absolute
+    top: 100%
+    right: 0
+    // 
+    width: 200px
+    // 
+    transition: background-color .3s, top .5s ease-in-out
+    +media-breakpoint-down(lg) // ≤1200px
+      position: relative
+      top: 0
+      // 
+      min-height: 66px
+      margin-bottom: 5vh
+  &.scroll 
+    .g-header
+      &__main
+        max-height: 66px
+        +media-breakpoint-down(lg) // ≤1200px
+          max-height: 40px
+      &__submenu
+        padding-top: 35px
+      &__logo
+        &-img
+          &--main
+            transform: translateY(-200px)
+          &--move
+            transform: translateY(0)
+      &__nav-list > li.menu-item a span
+        +media-breakpoint-up(xl) // ≥1200px
+          padding: 21px 0
+          // 
+          line-height: 24px
+      &__let
+        transform: translateY(-200px)
+      &__contacts
+        +media-breakpoint-up(xl) // ≥1200px
+          transform: translateY(-200px)
+      &__mobile.open
+        +media-breakpoint-down(lg) // ≤1200px
+          padding-top: 72px
+      &__call-btn
+        top: 0
+
+.g-submenu
+  pointer-events: none
+  //
+  position: absolute
+  top: 100%
+  left: 200%
+  // 
+  max-width: 100%
+  padding-top: 75px
+  margin-right: 60px
+  // 
+  transition: padding-top .3s ease-in-out, left .3s ease-in-out
+  &.active
+    pointer-events: auto
+    // 
+    left: 0
+  &__content
+    position: relative
+    // 
+    width: 100%
+    height: 650px
+    padding-top: 60px
+    overflow: hidden
+    // 
+    background-color: #fff
+    box-shadow: 0 3px 45px rgba(#000, .16)
+    &::before
+      content: ''
+      // 
+      position: absolute
+      bottom: 100%
+      left: 0
+      z-index: 99
+      // 
+      display: block
+      width: 200px
+      height: 100px
+      // 
+      // background-color: transparent
+      background-color: red
+  &__card
+    padding: 
+      left: 55px
+    margin:
+      right: -30px  
+      bottom: 50px
+    &-head
+      display: flex
+      align-items: center
+      width: 100%
+      height: 35px
+      .img
+        width: 45px
+        height: 45px
+        margin-right: 10px
+        // 
+        object-fit: cover
+    &-title
+      font-family: Arvo
+      font-size: 20px
+      text-align: left
+      line-height: 30px
+      color: $text
+    &-links
+      display: flex
+      flex-direction: column
+      margin-top: -10px
+      padding:
+        top: 15px
+        left: 55px
+      // 
+      font-family: Prompt
+    &-link
+      position: relative
+      // 
+      align-self: start
+      display: inline-block
+      // 
+      line-height: 32px
+      color: $text
+      &::before
+        content: ''
+        // 
+        position: absolute
+        bottom: 4px
+        left: 0
+        // 
+        width: 0
+        height: 1px
+        // 
+        background-color: $second
+        // 
+        transition: width .3s ease-in-out
+      &:hover
+        text-decoration: none
+        color: inherit
+      +media-breakpoint-up(lg) // ≥992px
+        &:hover
+          &::before
+            width: 100%
+  &__big_card
+    display: flex
+    flex-direction: column
+    height: 150%
+    padding: 60px 50px
+    margin-top: -60px
+    // 
+    border-left: 1px solid #e2e2e2
+    .g-submenu__card-head
+      margin-bottom: 33px
+    &-description
+      margin-bottom: 44px
+      p + p
+        margin-top: 30px
+    &-btn
+      width: 220px
+      &:hover
+        color: #fff !important

@@ -1,0 +1,203 @@
+.g-footer
+  padding: 77px 0 49px
+  overflow: hidden
+  // 
+  color: #fff
+  // 
+  background-color: $accent
+  a:hover
+    text-decoration: none
+    color: inherit
+    // 
+    transition: color .3s
+  &__logo
+    position: relative
+    // 
+    display: block
+    width: 257px
+    margin-bottom: 72px
+    +media-breakpoint-down(xs) // ≤576px
+      margin: 0 auto 72px
+    &::before
+      content: ''
+      // 
+      position: absolute
+      top: 0
+      left: 50%
+      // 
+      display: block
+      width: 582px
+      height: 395px
+      // 
+      background-image: url('../img/dest/logo-mask.svg')
+      background-size: cover
+      background-repeat: no-repeat
+      background-position: center
+      // 
+      transform: translate(-50%, -77px)
+  &__nav
+    position: relative
+    z-index: 1
+    // 
+    margin-bottom: 100px
+    +media-breakpoint-down(md) // ≤992px
+      margin-bottom: 50px
+    &-title
+      display: block
+      margin-bottom: 30px
+      // 
+      font-family: Prompt
+      font-size: 20px
+      font-weight: 400
+      line-height: 30px
+      color: $second
+    &-list
+      list-style: none
+      // 
+      column-count: 2
+      column-gap: 0
+      // 
+      padding: 0
+      margin: 0
+        top: -5px
+      +media-breakpoint-down(lg) // ≤1200px
+        column-gap: 35px
+      +media-breakpoint-down(xs) // ≤576px
+        column-count: 1
+        column-gap: 0
+      & > li.menu-item
+        a
+          line-height: 36px
+          color: #fff
+          &::before
+            background-color: $second
+    &-text
+      margin-bottom: 30px
+      // 
+      line-height: 24px
+    &-facebook
+      display: flex
+      justify-content: center
+      align-items: center
+      max-width: 282px
+      height: 50px
+      // 
+      font-size: 15px
+      line-height: 24px
+      color: #fff
+      // 
+      border: 1px solid #fff
+      border-radius: 25px
+      .icon
+        padding-bottom: 2px
+        margin-right: 13px
+        // 
+        font-size: 28px
+  &__contacts
+    display: flex
+    align-self: center
+    flex-direction: column
+    margin-bottom: 47px
+    &-phone
+      display: block
+      margin-bottom: 6px
+      // 
+      font-size: 36px
+      color: $second
+    &-email
+      position: relative
+      // 
+      align-self: start
+      display: inline-block
+      // 
+      line-height: 1
+      color: #fff
+      &::before
+        content: ''
+        // 
+        position: absolute
+        bottom: 0
+        left: 0
+        // 
+        width: 100%
+        height: 1px
+        // 
+        background-color: $second
+  &__copyright
+    display: block
+    // 
+    font-weight: 400
+    color: #5987bb
+    +media-breakpoint-down(lg) // ≤1200px
+      margin-top: 10px
+    +media-breakpoint-down(md) // ≤992px
+      margin-top: 30px
+  &__links
+    display: flex
+    padding-left: 40px
+    // 
+    font-size: 14px
+    line-height: 24px
+    color: #5987bb
+    +media-breakpoint-down(xl) // ≤1440px
+      padding-left: 30px
+    +media-breakpoint-down(lg) // ≤1200px
+      flex-direction: column-reverse
+      padding-left: 0
+    &-item
+      color: #5987bb
+      & + a
+        margin-left: 20px
+        +media-breakpoint-down(lg) // ≤1200px
+          margin-left: 0
+      &::before
+        background-color: #5987bb
+  &__nav-list > li.menu-item a,
+  &__links-item
+    position: relative
+    &::before
+      content: ''
+      // 
+      position: absolute
+      bottom: -4px
+      left: 0
+      // 
+      width: 0
+      height: 1px
+      // 
+      transition: width .3s ease-in-out
+    +media-breakpoint-up(lg) // ≥992px
+      &:hover
+        &::before
+          width: 100%
+
+.radian
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  // 
+  color: #5987bb
+  +media-breakpoint-down(lg) // ≤1200px
+    margin-top: 10px
+  +media-breakpoint-down(sm) // ≤768px
+    flex-direction: row-reverse
+    margin-top: 30px
+  &__text
+    margin-right: 11px
+    // 
+    font-size: 13px
+    font-weight: 400
+    text-align: right
+    line-height: 15px
+    +media-breakpoint-down(sm) // ≤768px
+      margin: 0
+        left: 11px
+      text-align: left
+  &__logo
+    width: 175px
+    +media-breakpoint-down(xl) // ≤1440px
+      width: 150px
+    +media-breakpoint-down(lg) // ≤1200px
+      width: 175px
+    +media-breakpoint-down(xs) // ≤576px
+      width: 150px
