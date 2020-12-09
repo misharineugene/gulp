@@ -1,6 +1,10 @@
 <ifModule mod_expires.c>
 
 # Add correct content-type for fonts & SVG
+AddType application/vnd.ms-fontobject .eot
+AddType application/x-font-ttf .ttf
+AddType application/x-font-opentype .otf
+AddType application/x-font-woff .woff
 AddType application/font-woff2 .woff2
 AddType image/svg+xml .svg
 
@@ -30,6 +34,6 @@ ExpiresByType application/xhtml+xml "access plus 600 seconds"
 
 <ifModule mod_deflate.c>
 
-AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript application/font-woff2 image/svg+xml
+AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript application/x-font-ttf application/x-font-opentype application/font-woff2 image/svg+xml
 
 </ifModule>

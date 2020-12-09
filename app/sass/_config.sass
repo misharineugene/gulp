@@ -6,16 +6,16 @@ $default-font-size: 16px
 $default-font-weight: 400
 $default-line-height: 1.5
 // 
-$accent: #003e84 // Accent Color
-$second: #ffbc21 // Second Color
+$accent: Orange // Accent Color
+$second: Cyan // Second Color
 $text: #000 // Text Color
-$green: green
+$green: Green
 
 // Customization Bootstrap vars from "bootstrap/scss/_variables.scss"
 $grid-gutter-width: 30px
 $grid-columns: 12
 $grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1440px)
-$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1170px, xxl: 1330px)
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px, xxl: 1320px)
 
 $gutter: $grid-gutter-width
 
@@ -26,18 +26,24 @@ $gutter: $grid-gutter-width
 @import 'node_modules/bootstrap/scss/bootstrap-grid.scss' // Optional Bootstrap Grid
 @import 'node_modules/bootstrap/scss/utilities/_sizing.scss' // Optional Bootstrap Utilites
 
-@import "../fonts/icomoon/style" // IcoMoon
-@import "node_modules/slick-carousel/slick/slick.scss" // Slick Skider
-@import "node_modules/animate.css/animate.min" // Animate
+// @import "../fonts/icomoon/style" // IcoMoon
+// @import "node_modules/slick-carousel/slick/slick.scss" // Slick Skider
+// @import "node_modules/animate.css/animate.min" // Animate
 
 // FONTS LOAD SECTION
-@mixin font($fname, $furl, $weight: normal, $style: normal)
+@mixin font($fname, $furl, $weight: normal, $style: normal, $icomoon: false)
   @font-face
     font-family: $fname
     font-weight: $weight
     font-style: $style
-    src: local($fname), url('#{$furl}.eot')
-    src: local($fname), url('#{$furl}.eot?#iefix') format('embedded-opentype'), url('#{$furl}.woff') format('woff'), url('#{$furl}.woff2') format('woff2'), url('#{$furl}.ttf') format('truetype')
+    
+    @if $icomoon == true
+      font-display: block
+      src: local($fname), url('#{$furl}.eot')
+      src: local($fname), url('#{$furl}.eot?#iefix') format('embedded-opentype'), url('#{$furl}.woff') format('woff'), url('#{$furl}.ttf') format('truetype'), url('#{$furl}.svg#icomoon') format('svg')
+    @else
+      src: local($fname), url('#{$furl}.eot')
+      src: local($fname), url('#{$furl}.eot?#iefix') format('embedded-opentype'), url('#{$furl}.woff') format('woff'), url('#{$furl}.woff2') format('woff2'), url('#{$furl}.ttf') format('truetype')
 
 // Roboto
 @include font("Roboto", "../fonts/Roboto/Roboto-Thin", 100)
@@ -47,36 +53,17 @@ $gutter: $grid-gutter-width
 @include font("Roboto", "../fonts/Roboto/Roboto-Bold", 700)
 @include font("Roboto", "../fonts/Roboto/Roboto-Black", 900)
 
-// Arvo
-@include font("Arvo", "../fonts/Arvo/Arvo", 400)
-@include font("Arvo", "../fonts/Arvo/Arvo-Bold", 700)
-
-// Prompt
-@include font("Prompt", "../fonts/Prompt/Light", 100)
-@include font("Prompt", "../fonts/Prompt/Prompt-ExtraLight", 200)
-@include font("Prompt", "../fonts/Prompt/Prompt-Light", 300)
-@include font("Prompt", "../fonts/Prompt/Prompt-Regular", 400)
-@include font("Prompt", "../fonts/Prompt/Prompt-Medium", 500)
-@include font("Prompt", "../fonts/Prompt/Prompt-SemiBold", 600)
-@include font("Prompt", "../fonts/Prompt/Prompt-Bold", 700)
-@include font("Prompt", "../fonts/Prompt/Prompt-ExtraBold", 800)
-@include font("Prompt", "../fonts/Prompt/Prompt-Black", 900)
+//IcoMoon
+@include font("icomoon", "../fonts/icomoon/icomoon", normal, normal, true)
+  
 
 // GENERAL DOCUMENT STYLES
-
 ::placeholder
-  color: #666
+  color: $text
 
 ::selection
   background-color: $accent
   color: #fff
-
-input, textarea
-  outline: none
-  &:focus:required:invalid
-    border-color: red
-  &:required:valid
-    border-color: green
 
 html, body
   height: 100%
@@ -94,39 +81,31 @@ body
   line-height: $default-line-height
   color: $text
   input, textarea
+    outline: none
     &:focus:required:invalid
       border-color: $accent
     &:required:valid
       border-color: $green
 
-.section
-  padding: 112px 0
-  +media-breakpoint-down(xs) // ≤576px
-    padding: 60px 0
-  &-title
-    margin-bottom: 16px
-    // 
-    font-family: Arvo
-    font-size: 36px
-    text-align: center
-    line-height: 22px
-    +media-breakpoint-down(md) // ≤992px
-      font-size: 30px
-      line-height: 38px
-  &-desc
-    text-align: center
+a,
+button
+  &:hover
+    cursor: pointer
+
+.w-100
+  width: 100%
+
+.h-100
+  height: 100%
 
 .btn
   position: relative
   // 
   display: inline-block
-  padding: 21px
   overflow: hidden
   // 
-  font-family: Prompt
   text-align: center
   white-space: nowrap
-  line-height: 18px
   // 
   background: none
   border: none
@@ -136,106 +115,26 @@ body
     content: ''
     // 
     position: absolute
-    top: -50%
+    top: 50%
+    left: 50%
     // 
     display: inline-block
-    width: 70%
-    height: 220%
+    width: 100px
+    height: 100px
+    margin:
+      top: -50px
+      left: -50px
     opacity: 0
     // 
     background-color: rgba(#fff, .15)
     border-radius: 50%
   &:hover
     text-decoration: none
-  &[href]
-    &:hover
-      color: inherit
   &:active
     &::before
       animation: touchIn 1s infinite
   &:focus
     outline: none
-  &--default
-    height: 66px
-    padding: 24px 20px
-    // 
-    font-size: 15px
-    color: #fff
-    // 
-    background-color: $accent
-    +media-breakpoint-up(lg) // ≥992px
-      &:hover
-        background-color: #0055b5
-    &:active
-      background-color: #0055b5
-  &--arrow
-    position: relative
-    // 
-    padding: 21px
-      right: 66px
-    .icon
-      position: absolute
-      top: 0
-      right: 0
-      bottom: 0
-      // 
-      display: flex
-      justify-content: center
-      align-items: center
-      width: 55px
-      // 
-      font-size: 24px
-      color: #fff
-      // 
-      transition: color .3s
-      &::before
-        z-index: 1
-        // 
-        display: flex
-        justify-content: center
-        align-items: center
-        width: 100%
-        height: 100%
-        padding-bottom: 1px
-      &::after
-        content: ''
-        // 
-        position: absolute
-        top: 0
-        left: 0
-        z-index: 0
-        // 
-        display: block
-        width: 100%
-        height: 100%
-        // 
-        background-image: url('../img/dest/btn_before.svg')
-        background-size: cover
-        background-repeat: no-repeat
-        background-position: left center
-        // 
-        transition: left .3s
-    +media-breakpoint-up(lg) // ≥992px
-      &:hover
-        .icon
-          color: $text
-          &::after
-            left: 100%
-    &:active
-      .icon
-        color: $text
-        &::after
-          left: 100%
-  &--second,
-  &--arrow
-    height: 60px
-    // 
-    font-size: 17px
-    color: $text
-    // 
-    background-color: $second
-    +media-breakpoint-down(sm) // ≤768px
-      font-size: 15px
 
 @-webkit-keyframes touchIn
   0%
@@ -247,23 +146,11 @@ body
     // 
     transform: scale(1)
 
-@keyframes borderCircle
-  0%
-    transform: rotate(0)
-  100%
-    transform: rotate(180deg)
-
 @-webkit-keyframes fadeIn
   0%
     opacity: 0
   100%
     opacity: 1
-
-@-webkit-keyframes fadeOut
-  0%
-    opacity: 1
-  100%
-    opacity: 0
 
 .img-responsive
   display: block
@@ -294,6 +181,7 @@ body
   transition: height .35s
 
 ////////////////////////////////////////////////
+// +media-breakpoint-down(xl) // ≤1440px
 // +media-breakpoint-down(lg) // ≤1200px
 // +media-breakpoint-down(md) // ≤992px
 // +media-breakpoint-down(sm) // ≤768px
@@ -303,4 +191,5 @@ body
 // +media-breakpoint-up(md) // ≥768px
 // +media-breakpoint-up(lg) // ≥992px
 // +media-breakpoint-up(xl) // ≥1200px
+// +media-breakpoint-up(xxl) // ≥1440px
 ////////////////////////////////////////////////

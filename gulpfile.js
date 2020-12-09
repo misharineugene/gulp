@@ -1,4 +1,4 @@
-let fileswatch = 'pug,html,htm,txt,json,md,woff2' // List of files extensions for watching & hard reload
+let fileswatch = 'pug,html,htm,txt,json,md,eot,ttf,woff,woof2,svg' // List of files extensions for watching & hard reload
 
 const { src, dest, parallel, series, watch } = require('gulp')
 const browserSync  = require('browser-sync').create()
@@ -11,6 +11,10 @@ const imagemin     = require('gulp-imagemin')
 const newer        = require('gulp-newer')
 const rsync        = require('gulp-rsync')
 const del          = require('del')
+
+const wp = true
+
+const path = wp ? '../assets' : 'app'
 
 function browsersync() {
   browserSync.init({
@@ -51,7 +55,8 @@ function scripts() {
     this.emit('end')
   })
   .pipe(rename('app.min.js'))
-  .pipe(dest('app/js'))
+  .pipe(dest('../assets/js'))
+  // 
   .pipe(browserSync.stream())
 }
 
@@ -60,35 +65,35 @@ function styles() {
   .pipe(sass({ outputStyle: 'expanded' }))
   .pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
   .pipe(rename('app.css'))
-  .pipe(dest('app/css'))
+  .pipe(dest(`${path}/css`))
   // 
   .pipe(sass({ outputStyle: 'compressed' }))
   .pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
   .pipe(rename('app.min.css'))
-  .pipe(dest('app/css'))
+  .pipe(dest(`${path}/css`))
   // 
   .pipe(browserSync.stream())
 }
 
 function images() {
-  return src('app/img/src/**/*')
-  .pipe(newer('app/img/dest'))
+  return src('app/img/**/*')
+  .pipe(newer(`${path}/img`))
   .pipe(imagemin())
-  .pipe(dest('app/img/dest'))
+  .pipe(dest(`${path}/img`))
 }
 
 function cleanimg() {
-  return del('app/img/dest/**/*', { force: true })
+  return del(`${path}/img/**/*`, { force: true })
 }
 
 function deploy() {
-  return src('app/')
+  return src('../')
   .pipe(rsync({
-    root: 'app/',
+    root: '../',
     hostname: 'username@yousite.com',
     destination: 'yousite/public_html/',
     include: [/* '*.htaccess' */], // Included files to deploy,
-    exclude: [ '**/Thumbs.db', '**/*.DS_Store' ],
+    exclude: [ '**/Thumbs.db', '**/*.DS_Store', 'gulp/' ],
     recursive: true,
     archive: true,
     silent: false,
@@ -100,7 +105,7 @@ function startwatch() {
   watch('app/pug/**/*.pug', { usePolling: true }, pages)
   watch('app/sass/**/*', { usePolling: true }, styles)
   watch(['app/js/**/*.js', '!app/js/**/*.min.js'], { usePolling: true }, scripts)
-  watch('app/img/src/**/*.{jpg,jpeg,png,webp,svg,gif}', { usePolling: true }, images)
+  watch('app/img/**/*.{jpg,jpeg,png,webp,svg,gif}', { usePolling: true }, images)
   watch(`app/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
 }
 
