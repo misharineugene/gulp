@@ -1,4 +1,3 @@
-import $ from 'jquery'; window.jQuery = $; window.$ = $ // import module example (npm i -D jquery)
 import WOW from 'wow.js';
 require('../../node_modules/slick-carousel/slick/slick.min.js') // Slick SLider
 require('../../libs/codeum/jquery.codeum.js') // Codeum
